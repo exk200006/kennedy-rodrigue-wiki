@@ -7,4 +7,4 @@ Admin
 .. toctree::
    :maxdepth: 1
 
-   docs/lab_manager
+   docs/glossary
