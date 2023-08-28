@@ -33,7 +33,7 @@ Parallel Script Template
     #SBATCH --nodes=1
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1        # can be increased if needed
-    #SBATCH- -mem=4G                 # can be increased if needed
+    #SBATCH --mem=4G                 # can be increased if needed
     #SBATCH --partition=KRLab
     #SBATCH --output=jid-%A-%a_jname-%x.log
     #SBATCH --mail-type=FAIL
