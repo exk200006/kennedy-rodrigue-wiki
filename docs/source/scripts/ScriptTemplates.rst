@@ -128,5 +128,7 @@ To run this script:
 
    In ``vi``, type:
 
+   .. code:: bash
+
       :%s/\r$//
       :x
