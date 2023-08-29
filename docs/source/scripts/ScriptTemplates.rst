@@ -42,10 +42,10 @@ Parallel Script Template
     # SGE settings
     #$ -V
     #$ -S /bin/bash
-    #$ -o jid-$JOB_ID-$TASK_ID_jname-$JOB_NAME.log
+    #$ -o jid-$JOB_ID-$TASK_ID_jname-$JOB_NAME.log      
     #$ -j y
     #$ -m a \
-    #$ -M ${USER}@utdallas.edu
+    #$ -M ${USER}@utdallas.edu                          
 
     # ------------------------------------------------------------------------------
     # modules
@@ -97,23 +97,6 @@ Parallel Script Template
     ensure_permissions ${out_paths[nii_dir]}
     print_footer
 
-.. note::
-   If you are getting the following error:
-
-   .. code:: bash
-      line 1: $':\r': command not found
-      line 5: syntax error near unexpected token `$'\r''
-
-   Then that means you have Windows-style line endings (occassionally caused by copy-pasting code from browsers).
-   To fix, go to terminal and type the following:
-   
-   .. code:: bash
-      vi -b /path/to/file
-
-   In ``vi``, type:
-      :%s/\r$//
-      :x
-
 Command Example
 +++++++++
 
@@ -128,3 +111,22 @@ To run this script:
     module load sge
     qsub /path/to/script/script.sh --airc_id 3tb1111 --sub 0001 --date 20230101 --ses 3
 
+.. note::
+   If you are getting the following error:
+
+   .. code:: bash
+
+      line 1: $':\r': command not found
+      line 5: syntax error near unexpected token `$'\r''
+
+   Then that means you have Windows-style line endings (occassionally caused by copy-pasting code from browsers).
+   To fix, go to terminal and type the following:
+   
+   .. code:: bash
+
+      vi -b /path/to/file
+
+   In ``vi``, type:
+
+      :%s/\r$//
+      :x
