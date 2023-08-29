@@ -3,7 +3,7 @@ Script Templates
 ######
 
 .. note::
-   This documentation is under active development. Last updated: 08/09/2023
+   This documentation is under active development. Last updated: 08/29/2023
 
 .. contents:: Table of Contents
    :depth: 2
@@ -96,6 +96,23 @@ Parallel Script Template
     # ------------------------------------------------------------------------------
     ensure_permissions ${out_paths[nii_dir]}
     print_footer
+
+.. note::
+   If you are getting the following error:
+
+   .. code:: bash
+      line 1: $':\r': command not found
+      line 5: syntax error near unexpected token `$'\r''
+
+   Then that means you have Windows-style line endings (occassionally caused by copy-pasting code from browsers).
+   To fix, go to terminal and type the following:
+   
+   .. code:: bash
+      vi -b /path/to/file
+
+   In ``vi``, type:
+      :%s/\r$//
+      :x
 
 Command Example
 +++++++++
