@@ -3,7 +3,7 @@ Script Templates
 ######
 
 .. note::
-   This documentation is under active development. Last updated: 08/09/2023
+   This documentation is under active development. Last updated: 08/29/2023
 
 .. contents:: Table of Contents
    :depth: 2
@@ -33,7 +33,7 @@ Parallel Script Template
     #SBATCH --nodes=1
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1        # can be increased if needed
-    #SBATCH- -mem=4G                 # can be increased if needed
+    #SBATCH --mem=4G                 # can be increased if needed
     #SBATCH --partition=KRLab
     #SBATCH --output=jid-%A-%a_jname-%x.log
     #SBATCH --mail-type=FAIL
@@ -42,10 +42,10 @@ Parallel Script Template
     # SGE settings
     #$ -V
     #$ -S /bin/bash
-    #$ -o jid-$JOB_ID-$TASK_ID_jname-$JOB_NAME.log
+    #$ -o jid-$JOB_ID-$TASK_ID_jname-$JOB_NAME.log      
     #$ -j y
     #$ -m a \
-    #$ -M ${USER}@utdallas.edu
+    #$ -M ${USER}@utdallas.edu                          
 
     # ------------------------------------------------------------------------------
     # modules
@@ -111,3 +111,24 @@ To run this script:
     module load sge
     qsub /path/to/script/script.sh --airc_id 3tb1111 --sub 0001 --date 20230101 --ses 3
 
+.. note::
+   If you are getting the following error:
+
+   .. code:: bash
+
+      line 1: $':\r': command not found
+      line 5: syntax error near unexpected token `$'\r''
+
+   Then that means you have Windows-style line endings (occassionally caused by copy-pasting code from browsers).
+   To fix, go to terminal and type the following:
+   
+   .. code:: bash
+
+      vi -b /path/to/file
+
+   In ``vi``, type:
+
+   .. code:: bash
+
+      :%s/\r$//
+      :x
